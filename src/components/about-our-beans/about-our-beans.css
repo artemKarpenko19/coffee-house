@@ -1,0 +1,22 @@
+.about-our-beans {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    padding: 5rem;
+}
+
+.about-our-beans-descr {
+    text-align: center;
+    line-height: 30px;
+}
+
+.about-our-beans-text {
+    margin-left: 5rem;
+    width: 35%;
+}
+
+.about-our-beans-title {
+    text-align: center;
+}
+
+

@@ -1,0 +1,35 @@
+.underline {
+    position: relative;	
+    width: 250px;
+    margin: 20px auto;
+
+}
+.underline img {
+    width: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+    
+}
+
+.underline::before {
+	content: '';
+    position: absolute;
+    top: 50%;
+    left:0;
+    width: 30%;
+    height: 2px;
+    background-color: #000;
+    display: inline-block;
+}
+
+.underline::after {
+	content: '';
+    position: absolute;
+    top: 50%;
+    right:0;
+    width: 30%;
+    height: 2px;
+    background-color: #000;
+    display: inline-block;
+}
