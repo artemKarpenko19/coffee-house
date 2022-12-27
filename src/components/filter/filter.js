@@ -1,5 +1,4 @@
 
-import Search from "../search/search";
 
 import "./filter.css";
 
@@ -11,7 +10,8 @@ const Filter = (props) => {
     const btnsData = [
         {name:"Brasil", label: "Brasil"},
         {name:"Keniya", label: "Keniya"},
-        {name:"Colombia", label: "Columbia"},   
+        {name:"Columbia", label: "Columbia"},
+        {name:"All", label: "All"},
     ];
     
     const btns = btnsData.map(({name, label}) => {
@@ -21,7 +21,8 @@ const Filter = (props) => {
            <button
            key={name}
            type="button"
-           className={`btn ${clazz}`}>
+           className={`btn ${clazz}`}
+           onClick={() => props.onFilter(name)}>
             {label}
            </button>
         )
@@ -31,12 +32,11 @@ const Filter = (props) => {
   
         return (
             <div className="filter">
-               <Search/>
                 <label>Or filter</label>
                 {btns}
             </div>
         )
-        
+
 }
 
 export default Filter;

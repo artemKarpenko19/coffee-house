@@ -1,10 +1,13 @@
 .header {
     width: 100%;
-    background-image: url(../../images/main-bg.jpg);
     background-size: cover;
     font-family: 'Merienda';
     padding-bottom: 2rem;
+    height: 500px;
+}
 
+.header-main {
+    background-image: url(../../images/main-bg.jpg);
 }
 
 .wrapper {
@@ -20,6 +23,7 @@
 }
 
 .header-subtitle {
+    width: 100%;
     font-size: 1.5rem;
     margin-top: 1.5rem;
 }

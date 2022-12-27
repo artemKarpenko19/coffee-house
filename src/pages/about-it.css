@@ -1,0 +1,27 @@
+.about-it {
+    display: flex;
+    padding: 5rem ;
+}
+.about-it-img {
+    width:50%;
+}
+
+.about-it-descr {
+    width: 50%;
+    margin-left: 5rem;
+
+}
+
+.about-it-title {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.about-it-descr p {
+    margin-top: 2rem;
+}
+
+.about-it-descr p span {
+    font-weight: 700;
+}

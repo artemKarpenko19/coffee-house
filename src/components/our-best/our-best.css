@@ -12,6 +12,7 @@
 }
 
 .our-best-item {
+    text-decoration: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

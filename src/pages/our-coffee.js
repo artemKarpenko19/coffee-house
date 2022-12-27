@@ -1,32 +1,26 @@
 
 import { Component } from "react";
-import NavMenu from "../components/header/nav-menu";
-import Footer from "../components/footer/footer";
+import { Link } from "react-router-dom";
+
+
 import AboutOurBeans from "../components/about-our-beans/about-our-beans";
 import Filter from "../components/filter/filter";
+import Search from "../components/search/search";
+
 
 import "./our-coffee.css";
-
-
-
-
 
 
 class OurCoffee extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            cardsData : [
-                {name:"AROMISTICO Coffee 1 kg", price: "6.99$",  country: "Brasil" , src: require('../images/card-img.png'), alt: "altImg1", id: '1'},
-                {name:"AROMISTICO Coffee 2 kg", price: "7.99$",  country: "Keniya" , src: require('../images/card-img.png'), alt: "altImg1", id: '2'},
-                {name:"TAROMISTICO Coffee 1 kg", price: "6.99$",  country: "Columbia" , src: require('../images/card-img.png'), alt: "altImg1", id: '3'},
-                {name:"AROMISTICO Coffee 3 kg", price: "13.69$",  country: "Brasil" , src: require('../images/card-img.png'), alt: "altImg1", id: '4'},
-                {name:"AROMISTICO Coffee 4 kg", price: "6.99$",  country: "Brasil" , src: require('../images/card-img.png'), alt: "altImg1", id: '5'},
-                {name:"BAROMISTICO Coffee 1 kg", price: "6.99$",  country: "Brasil" , src: require('../images/card-img.png'), alt: "altImg1", id: '6'},
-            ],
+            cardsData: props.cardsData,
             term: '',
-            filter: "",
+            filter: '',
+            actual: '2',
         }
+        
     }
     
     searchEmp = (items, term) => {
@@ -44,43 +38,60 @@ class OurCoffee extends Component {
     filterPost = (items, filter) => {
         switch (filter) {
             case 'Brasil': 
-                return items.filter(item => 
-                    item.country === 'Brasil');
+                return items.filter(item => item.country === 'Brasil');
             case 'Columbia': 
                 return items.filter(item => item.country === 'Columbia');
             case 'Keniya': 
-                return items.filter(item => item.country === 'Keniya'); 
+                return items.filter(item => item.country === 'Keniya');
+            case 'All': 
+                return items;   
             default : return items;   
         }
     }
 
+    onFilter = (filter) => {
+        this.setState({filter});
+    }
+
+    
+       
+
+    
     render () {
+        
         const {cardsData, term, filter} = this.state;
         const visibleCards = this.filterPost(this.searchEmp(cardsData, term), filter);
-        const cards = visibleCards.map(({name, price, src, alt, country}) => {
+        const cards = visibleCards.map(({name, price, src, alt, country, id}) => {
    
-            return (
-                <div className="our-best-item" key={name}>
-                    <img src={src} alt={alt}></img>
-                    <h4>{name}</h4>
-                    <span>{country}</span>
-                    <span>{price}</span>
-                </div>
+            return (   
+                        <div className="our-best-item" key={id}  value={name}>
+                            <img src={src} alt={alt}></img>
+                            <Link id={id} to={`/about-it/` + id} onClick = {() => {this.props.onCardSelect(id)}}><h4>{name}</h4></Link> 
+                            <span>{country}</span>
+                            <span>{price}</span>
+                            
+                        </div>
+                       
+               
             )
         
         });
         return (
             <div>
-                <div className="header">
-                <NavMenu/>
+                <div className="header header-our-coffee">
                 <h1 className="header-title">Our Coffee</h1>
                 </div>
                 <AboutOurBeans/>
-                <Filter onUpdateSearch={this.onUpdateSearch} filter={filter}/>
+                <div className="filter">
+                    <Search onUpdateSearch={this.onUpdateSearch}/>
+                    <Filter onFilter={this.onFilter} filter={filter}/>
+                </div>
                 <div className="cards">
                     {cards}
                 </div>
-                <Footer/>
+
+            
+                
             </div>
         )
     }

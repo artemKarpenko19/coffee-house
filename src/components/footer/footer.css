@@ -9,7 +9,12 @@
     
 }
 
+.footer-nav-menu li {
+    list-style: none;
+}
+
 .footer-nav-menu-item {
+    text-decoration: none;
     display: flex;
     padding: 50px 40px;
     font-family: 'Merienda';

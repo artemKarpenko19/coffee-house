@@ -2,7 +2,7 @@ import { Component } from "react";
 
 
 class Search extends Component {
-    
+
     constructor (props) {
         super(props);
         this.state = {
@@ -18,8 +18,8 @@ class Search extends Component {
     
     render () {
         return (
-            <div>
-                 <label>Looking for</label>
+            <div className="filter">
+                <label>Looking for</label>
                 <input type = "text"
                 placeholder = "start typing here..."
                 value = {this.state.term}
